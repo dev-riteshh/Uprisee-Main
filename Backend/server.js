@@ -1,24 +1,20 @@
-const express = require('express')
-const app = express()
+const dotenv = require('dotenv').config();
 const mongoose = require('mongoose')
-mongoose.set('strictQuery', true);
+const express = require('express');
+const connectDb = require('./config/dbConnection');
+const errorhandler = require('./middlewares/errorhandler');
+const router = require('./routes/job');
+const app = express()
 
-port = 8000
 
-//temp middele ware
-app.use('/',(req,res,next)=>{
-    res.send('hello from server')
+connectDb()
+
+const port = process.env.PORT ||  5000
+
+app.use(express.json())
+app.use(router)
+app.use(errorhandler)
+
+app.listen(port,()=>{
+    console.log(`server is runnig on port ${port}`);
 })
-
-
-mongoose.connect('mongodb+srv://devriteshhh:R22.Mane@cluster0.7wgp5tm.mongodb.net/Uprisee?retryWrites=true&w=majority')
-   .then(()=>{
-    console.log('conned to db');
-   })
-   .then(  
-       app.listen(port,(req,res)=>{
-          console.log(`listing on port ${port}`)
-       })
-   ).catch((err)=>console.log(err))
-
-

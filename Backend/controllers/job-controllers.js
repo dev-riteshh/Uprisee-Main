@@ -1,11 +1,12 @@
+const asyncHandler = require('express-async-handler')
 
-const getAllContacts = (req,res)=>{
+const getAllContacts = asyncHandler((req,res)=>{
     res.json({message:'all jobs'})
-}
+})
 
 
 
-const createNewJob = (req,res)=>{
+const createNewJob = asyncHandler( async (req,res)=>{
     console.log('this is request',req.body);
     const {name,email} = req.body
 
@@ -14,22 +15,22 @@ const createNewJob = (req,res)=>{
         throw new Error("all feilds are mandatory")
     }
 
-    res.json({message:'create new job'})
-}
+    res.status(201).json({message:'create new job'})
+})
 
 
 
-const getSingleJob = (req,res)=>{
+const getSingleJob = asyncHandler((req,res)=>{
     res.json({message:`get single job ${req.params.id}`})
-}
+})
 
-const updateSingleJob = (req,res)=>{
+const updateSingleJob = asyncHandler((req,res)=>{
     res.json({message:`update existing job for ${req.params.id}`})
-}
+})
 
-const deleteSingleJob =(req,res)=>{
+const deleteSingleJob = asyncHandler((req,res)=>{
     res.json({message:`delete this job ${req.params.id}`})
-}
+})
 
 
 module.exports = {

@@ -7,10 +7,11 @@ const SideNav = () => {
 
   const ActiveLink =(props)=>{
     return <NavLink 
-       style={({isActive,pathname})=>{
+       style={({isActive,isHover})=>{
          return{
           color:isActive?'#fff':'#334155',
           background:isActive?'#4f46e5':'#fff',
+          hover:isHover? '#94a3b8':''
          }
        }}
        {...props}
@@ -22,25 +23,25 @@ const SideNav = () => {
       <div className="flex flex-col text-center">
         <ActiveLink
           to={"investor"}
-          className="font-semibold text-lg p-2 hover:text-white hover:bg-indigo-600 my-1 rounded-md"
+          className=" font-semibold text-lg p-2 hover:text-white hover:bg-indigo-300 my-1 rounded-md"
         >
           Investor
         </ActiveLink>
         <ActiveLink
           to={"proposal"}
-          className="font-semibold text-lg p-2 hover:text-white hover:bg-indigo-600 my-1 rounded-md"
+          className=" font-semibold text-lg p-2 hover:text-white hover:bg-indigo-300 my-1 rounded-md"
         >
           Proposal
         </ActiveLink>
         <ActiveLink
           to={"postjob"}
-          className="font-semibold text-lg p-2 hover:text-white hover:bg-indigo-600 my-1 rounded-md"
+          className=" font-semibold text-lg p-2 hover:text-white hover:bg-indigo-300 my-1 rounded-md"
         >
           Post Job
         </ActiveLink>
         <ActiveLink
           to={"profile"}
-          className="font-semibold text-lg p-2 hover:text-white hover:bg-indigo-600 my-1 rounded-md"
+          className=" font-semibold text-lg p-2 hover:text-white hover:bg-indigo-300 my-1 rounded-md"
         >
           Profile
         </ActiveLink>
