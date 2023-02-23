@@ -1,7 +1,9 @@
 import "./App.css";
 import { useRoutes } from "react-router-dom";
-
-import { Landingpage,LogIn,Register,Profile,Proposal,PostJob,Investor,Dashboard } from "./pages/global";
+import { Landingpage,LogIn,Profile,Proposal,PostJob,Investor,Dashboard, AllJobs, Resume, Applications, ProfileJobSeeker, DashboardJob} from "./pages/global";
+import Register from "./pages/Register";
+import StartupForm from "./pages/Register/StartUpForm";
+import JobseekerForm from "./pages/Register/JobseekerForm";
 
 
 
@@ -15,19 +17,25 @@ function App() {
     {
       path: "/register",
       element: <Register />,
+      children:[
+        {
+          path:'startupform',
+          element: <StartupForm />
+        },
+        {
+          path:'jobseekerform',
+          element: <JobseekerForm />
+        }
+      ]
     },
     {
       path: "/login",
       element: <LogIn />,
     },
     {
-      path: "/dashboard",
+      path: "/startup-dashboard",
       element: <Dashboard />,
       children: [
-        {
-            index:'/investor',
-            element : <Investor />
-        },
         {
           path: "profile",
           element: <Profile />,
@@ -43,6 +51,32 @@ function App() {
         {
           path: "postjob",
           element: <PostJob />,
+        },
+      ],
+    },
+    {
+      path: "/jobseeker-dashboard",
+      element: <DashboardJob />,
+      children: [
+        {
+          index: "alljobs",
+          element: <AllJobs />,
+        },
+        {
+          path: "job-seeker-profile",
+          element: <ProfileJobSeeker />,
+        },
+        {
+          path: "alljobs",
+          element: <AllJobs />,
+        },
+        {
+          path: "Resume",
+          element: <Resume />,
+        },
+        {
+          path: "applications",
+          element: <Applications />,
         },
       ],
     },

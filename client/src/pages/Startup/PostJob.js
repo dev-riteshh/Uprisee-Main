@@ -1,6 +1,6 @@
 import React from "react";
-import PostJobForm from "./PostJobForm";
-import PostedJob from "./PostedJob";
+import PostJobForm from "./components/PostJobForm";
+import PostedJob from "./components/PostedJob";
 
 const PostJob = () => {
   return (

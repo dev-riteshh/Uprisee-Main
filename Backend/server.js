@@ -1,6 +1,7 @@
 const dotenv = require('dotenv').config();
-const mongoose = require('mongoose')
+const cors = require('cors')
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const connectDb = require('./config/dbConnection');
 const errorhandler = require('./middlewares/errorhandler');
 const router = require('./routes/job');
@@ -12,7 +13,9 @@ connectDb()
 const port = process.env.PORT ||  5000
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(router)
+app.use(cors())
 app.use(errorhandler)
 
 app.listen(port,()=>{

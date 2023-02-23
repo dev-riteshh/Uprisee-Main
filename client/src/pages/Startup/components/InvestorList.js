@@ -9,13 +9,13 @@ const InvestorList = () => {
                 scope="row"
                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
               >
-                Apple MacBook Pro 17"
+                John Doe
               </th>
-              <td class="px-6 py-4">Silver</td>
-              <td class="px-6 py-4">Laptop</td>
-              <td class="px-6 py-4">$2999</td>
-              <td class="px-6 py-4">$2999</td>
-              <td class="px-6 py-4">$2999</td>
+              <td class="px-6 py-4">Abc compny</td>
+              <td class="px-6 py-4">Mumbai</td>
+              <td class="px-6 py-4">Technology</td>
+              <td class="px-6 py-4">Seed</td>
+              <td class="px-6 py-4">Up to $2999</td>
               <td class="px-6 py-4">
                <Link 
                   to={'/dashboard/proposal'}

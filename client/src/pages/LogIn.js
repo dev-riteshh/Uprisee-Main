@@ -22,11 +22,11 @@ const LogIn = () => {
             placeholder="Password"
           />
         </label>
-        <Link to={'/dashboard/investor'} className="rounded-md p-2 bg-indigo-600 text-white text-center">
+        <Link to={'/startup-dashboard/investor'} className="rounded-md p-2 bg-indigo-600 text-white text-center">
             Log in 
         </Link>
         <span className=" text-center text-base">
-          forgot Password ?{" "}
+          forgot Password ?
           <Link to={"/"} className="text-indigo-600">
             Recover Password
           </Link>

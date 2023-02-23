@@ -45,3 +45,9 @@ body{
     color: white;
     font-size: 19px;
   }
+
+  .active{
+    @apply bg-indigo-600
+  }
+
+  

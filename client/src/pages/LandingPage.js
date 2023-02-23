@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import heroimg from '../assets/heroimg.png'
+
 
 const LandingPage = () => {
   return (
@@ -17,7 +19,7 @@ const LandingPage = () => {
               Log in
             </Link>
             <Link
-              to={"register"}
+              to={"/register"}
               className="p-3 py-2 text-lg bg-indigo-600 rounded-md m-5 text-white"
             >
               Get Started
@@ -27,7 +29,7 @@ const LandingPage = () => {
 
 
         {/* //hero section */}
-        <section className="flex py-10">
+        <section className="flex py-10 gap-8 items-center">
           <div className="w-1/2 flex flex-col gap-4 leading-tight">
             <span className="bg-indigo-400 w-fit text-lg text-white rounded-full font-semibold px-5 py-2">For Startups</span>
             <h1 className="text-[3rem] uppercase font-black text-slate-900">
@@ -40,14 +42,14 @@ const LandingPage = () => {
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae perferendis voluptatibus officiis maxime quae corrupti itaque asperiores velit exercitationem.
             </p>
             <Link
-              to={"register"}
+              to={"/register/startup-signup"}
               className="p-5 py-3 mt-7 w-fit text-xl bg-indigo-600 rounded-md text-white"
             >
               Get Started
             </Link>
           </div>
-          <div>
-
+          <div className="relative flex-1">
+            <img src={heroimg} alt='heroimage' className=""/>
           </div>
         </section>
       </div>

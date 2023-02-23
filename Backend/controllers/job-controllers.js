@@ -1,35 +1,70 @@
 const asyncHandler = require('express-async-handler')
+const Job = require('../models/jobModel')
 
-const getAllContacts = asyncHandler((req,res)=>{
-    res.json({message:'all jobs'})
+const getAllContacts = asyncHandler( async (req,res)=>{
+    const Jobs = await Job.find();
+    res.json(Jobs)
 })
-
 
 
 const createNewJob = asyncHandler( async (req,res)=>{
-    console.log('this is request',req.body);
-    const {name,email} = req.body
+    const {jobTitle,jobDescription,salary,location,company} = req.body
 
-    if(!name || !email){
-        res.status(400)
-        throw new Error("all feilds are mandatory")
+    
+
+    const newJob = await Job.create({
+        jobTitle,
+        jobDescription,
+        salary,
+        location,
+        company,
+    })
+
+
+
+    res.status(201).json(newJob)
+})
+
+
+
+const getSingleJob = asyncHandler( async (req,res)=>{
+    const singleJob = await Job.findById(req.params.id)
+    if (!singleJob) {
+        res.status(404)
+        throw new Error('job not found')
+    }
+    res.json(singleJob)
+})
+
+
+
+const updateSingleJob = asyncHandler( async (req,res)=>{
+    const Findjob = await Job.findById(req.params.id)
+    if (!Findjob){
+        res.status(404)
+        throw new Error('job not found')
     }
 
-    res.status(201).json({message:'create new job'})
+    const updatedjob = await Job.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new : true }
+    )
+    res.json(updatedjob)
 })
 
 
 
-const getSingleJob = asyncHandler((req,res)=>{
-    res.json({message:`get single job ${req.params.id}`})
-})
 
-const updateSingleJob = asyncHandler((req,res)=>{
-    res.json({message:`update existing job for ${req.params.id}`})
-})
+const deleteSingleJob = asyncHandler( async (req,res)=>{
+    const job = await Job.findById(req.params.id)
+    if (!job){
+        res.status(404)
+        throw new Error('job not found')
+    }
 
-const deleteSingleJob = asyncHandler((req,res)=>{
-    res.json({message:`delete this job ${req.params.id}`})
+    const deletedJob =await Job.deleteOne({id:job});
+    res.json(deletedJob)
 })
 
 
